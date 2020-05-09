@@ -1,3 +1,4 @@
+# Maintainer: ubicorn <ubicorn@protonmail.com>
 pkgname=ubic-core
 pkgver=0.4.2
 pkgrel=1
