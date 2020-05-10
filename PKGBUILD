@@ -1,6 +1,6 @@
 # Maintainer: ubicorn <ubicorn@protonmail.com>
-pkgname=ubic-core
-pkgver=0.4.2
+pkgname=ubic-core-git
+pkgver=r609.e2e8235
 pkgrel=1
 pkgdesc="official UBIC node"
 arch=('x86_64')
@@ -8,17 +8,22 @@ url="https://github.com/UBIC-repo/core"
 license=('MIT')
 makedepends=('git' 'cmake')
 depends=('leveldb' 'pcsclite' 'boost' 'boost-libs' 'openssl')
-source=("ubic-core-$pkgver.tar.gz::https://github.com/UBIC-repo/core/archive/V$pkgver.tar.gz")
-sha256sums=('7c49382386a487125e7665ab13743ad6443a30d84aee6d8f22a8936f34d4ccb3')
+source=("${pkgname}::git+https://github.com/UBIC-repo/core.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-	cd "$srcdir/core-$pkgver"
+	cd "$srcdir/$pkgname"
 	cmake CMakeLists.txt
 	make
 }
 
 package() {
-	cd "$srcdir/core-$pkgver"
+	cd "$srcdir/$pkgname"
 
 	install -Dm755 "ubicd" -t "$pkgdir/usr/bin/"
 	install -Dm755 "ubic" -t "$pkgdir/usr/bin/"
