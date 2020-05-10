@@ -39,7 +39,7 @@ package() {
 	else
 		install -m777 -d "${pkgdir}/var/ubic/"
 		cp -r "Static/web" "$pkgdir/var/ubic/"
-		cp -r -m777 -d "Static/genesis" "$pkgdir/var/ubic/genesis"
+		cp -r "Static/genesis" "$pkgdir/var/ubic/genesis"
 	fi
 
 	install -m755 -d ${pkgdir}/usr/lib/systemd/system
