@@ -43,5 +43,5 @@ package() {
 	fi
 
 	install -m755 -d ${pkgdir}/usr/lib/systemd/system
-	install -m644 $startdir/ubic.service -t ${pkgdir}/usr/lib/systemd/system
+	#install -m644 $startdir/ubic.service -t ${pkgdir}/usr/lib/systemd/system
 }
