@@ -37,6 +37,7 @@ package() {
 		cp -r "Static/genesis" "$pkgdir/var/ubic/genesis"
 		chmod 777 -R "$pkgdir/var/ubic/"
 	else
+		install -m777 -d "${pkgdir}/var/ubic/"
 		cp -r "Static/web" "$pkgdir/var/ubic/"
 		cp -r -m777 -d "Static/genesis" "$pkgdir/var/ubic/genesis"
 	fi
